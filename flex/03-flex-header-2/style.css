@@ -12,6 +12,10 @@ body {
   background: white;
   border-bottom: 1px solid #ddd;
   box-shadow: 0 0 8px rgba(0,0,0,.1);
+  display: flex;
+  align-items: center;
+  justify-content: normal;
+  padding: 8px;
 }
 
 .profile-image {
@@ -27,6 +31,7 @@ body {
   font-size: 32px;
   font-weight: 900;
   font-style: italic;
+  margin: 0 16px 0 0;
 }
 
 button {
@@ -34,6 +39,8 @@ button {
   border-radius: 8px;
   background: rebeccapurple;
   color: white;
+  margin-left: auto; /* letting the button be 'greedy' for available space */
+  margin-right: 16px;
   padding: 8px 24px;
 }
 
@@ -45,4 +52,9 @@ a {
 
 ul {
   list-style-type: none;
+  display: flex;
+  /* Pretty sure this breaks the 'flex is used to arrange everything'
+     condition, but go figure */
+  padding-inline-start: 0;
+  gap: 16px;
 }
