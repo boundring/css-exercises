@@ -25,3 +25,66 @@ input {
   width: 400px;
   margin-bottom: 16px;
 }
+
+/* Mimicking OdProj's solution method from this point forward,
+  overriding in-place CSS. */
+
+/* no underline, custom color */
+a {
+  text-decoration: none;
+  color: #6b6b6b;
+}
+
+/* no marker, no indent, flex gap */
+ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding-left: 0;
+}
+
+/* overriding body for font size, flex column */
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+/* center gap for header/footer,
+  equivalent/alternative: ".left-links { margin-right: auto; }" */
+.right-links {
+  margin-left: auto;
+}
+
+/* padding, window-fitting via auto margin */
+.header {
+  display: flex;
+  margin: 0 0 auto 0;
+  padding: 1em;
+}
+
+/* centering columnar content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* overriding button text and size */
+button {
+  color: black;
+  font-weight: 600;
+  padding: 0.5em 1em;
+}
+
+/* ditto .header, plus background recolor */
+.footer {
+  display: flex;
+  margin: auto 0 0 0;
+  padding: 1em;
+  background-color: #eeeeee;
+}
+
+
+
