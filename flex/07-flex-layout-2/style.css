@@ -26,3 +26,111 @@ body {
   box-shadow: 2px 4px 16px rgba(0,0,0,.06);
   border-radius: 4px;
 }
+
+/* My solution follows, with documentation of specifics regarding the
+  differences I noticed upon reviewing the OdProj-provided solution. */
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* The provided solution doesn't properly align the hyphenated text
+  component beyond each emoji in the "desired-outcome.png" example. So,
+  I'm trying something a little creative, separating each emoji into its
+  own <p> element for within-<a> flexing, maintaining the link covering
+  each emoji and text component while aligning on the hyphen. */
+a {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  /* margin-right: auto forces alignment of left edge with consistent-
+    size elements to the immediate right, given no margins and flex. */
+  margin: 0 auto 0 0;
+}
+
+/* Got a little fancy with it: right-aligned, vertically centered, non-
+  shrinking, non-growing, works within each <a> as text, maintaining the
+  link across the 3px margin gap. */
+.linkmoji {
+  width: 16px;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 24px;
+  margin: 0 3px 0 0;
+  padding: 0;
+}
+
+/* Weird effects in place from the width setting for emojis, here.
+  Setting margin to 0 for <ul> results in the appearance of some kind of
+  negative margin-left, despite that not being set. This is likely due
+  to the combination of justify-content: flex-end on emojis and margin-
+  right: auto on <a>s, in some way.*/
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  margin-left: 16px;
+  list-style: none;
+  gap: 15px;
+}
+
+.header {
+  display: flex;
+  font-size: 32px;
+  font-weight: 900;
+  align-items: center;
+  margin: 0;
+  padding-left: 16px;
+}
+
+.internal {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+/* Setting padding to 16px appears to have no effect on padding-left,
+  likely due to the flex settings for <a>s, emojis, and <ul>.*/
+.sidebar {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  margin: 0;
+  padding: 16px;
+  width: 300px;
+}
+
+/* It is at this point that I notice how the intended 32px padding for
+  the card section is not actually implemented in the desired outcome
+  image or solution, since they've set a 16px margin on each card
+  instead of using gap, resulting in a net-48px padding. Not sure how I
+  feel about that, really. Nobody's perfect, but at least gap lets you
+  forgo card margins and still keep consistent spacing. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px;
+  gap: 32px;
+}
+
+.card {
+  margin: 0;
+  padding: 16px;
+  width: 300px;
+}
+
+.footer {
+  display: flex;
+  margin: auto 0 0 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+}
